@@ -1,0 +1,52 @@
+<div class="scrollable">
+    <div class="scrollable-content">
+        <div class="panel">
+
+            <div class="panel-heading">
+                <h2 class="panel-title">
+                    Artikel verfassen
+                </h2>
+            </div>
+            <div class="panel-body">
+
+                <select name="infoBox4" ng-change="read()" ng-model="newsSelect" size="5" id="newsSelect"></select>
+                <button ng-click="renew()">renew</button>
+                <button ng-click="manualUpdate()">manualUpdate</button>
+
+            </div>
+
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading" toggle target="collapseOne">
+                        <h4 class="panel-title">
+                            HTML
+                        </h4>
+                    </div>
+                    <div id="collapseOne" toggleable active-class="in" exclusion-group="accordion1" default="active"
+                         class="panel-collapse collapse">
+                        <div class="panel-body">
+                            html
+                            <p id="htmlSource">gfdgdfgdf</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" toggle target="collapseTwo">
+                        <h4 class="panel-title">
+                            LaTeX
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" toggleable active-class="in" exclusion-group="accordion1"
+                         class="panel-collapse collapse">
+                        <div class="panel-body">
+                            latex
+                            <p id="latexSource"sassfasdas></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

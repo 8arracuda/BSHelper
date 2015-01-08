@@ -1,0 +1,91 @@
+<!--<div ng-controller="NewMessageController">-->
+<div class="scrollable">
+    <div class="scrollable-content">
+        <div class="panel">
+
+            <div class="panel-heading">
+                <h2 class="panel-title">
+                    Bereich auswählen
+                </h2>
+            </div>
+            <div class="panel-body">
+
+                <select bs-form-control
+                        name="infoBox1"
+                        ng-change="update()"
+                        label="Land"
+                        ng-model="mainStructure"
+                        id="mainStructureSelect">
+
+                </select>
+
+
+                <select bs-form-control
+                        name="infoBox2"
+                        ng-change="update2()"
+                        label="Stadt"
+                        ng-model="subStructure"
+                        id="subStructureSelect">
+
+                </select>
+
+                <select bs-form-control
+                        name="infoBox3"
+                        label="Thema"
+                        ng-model="selectedTopic"
+                        id="newTopicSelect">
+                    <option ng-repeat="topic in topicsArray">
+                        {{ topic }}
+                    </option>
+                </select>
+
+                <button ng-click="renew()">renew</button>
+            </div>
+            <div class="panel-heading">
+                <h2 class="panel-title">
+                    Artikel verfassen
+                </h2>
+            </div>
+
+            <input
+                    bs-form-control
+                    id="inputBoxForHeadline"
+                    type="text"
+                    label="Überschrift"
+                    placeholder="Überschrift hier eingeben"
+                    label-class="col-xs-3 col-sm-2 col-lg-1"
+                    class="col-xs-9 col-sm-10 col-lg-11"
+                    ng-model="headlineString"
+                    />
+
+            <input
+                    bs-form-control
+                    id="inputBoxForMessage"
+                    type="text"
+                    label="Überschrift"
+                    placeholder="Meldung hier eingeben"
+                    label-class="col-xs-3 col-sm-2 col-lg-1"
+                    class="col-xs-9 col-sm-10 col-lg-11"
+                    ng-model="messageString"
+                    />
+            <br>
+            <button class="btn btn-primary" ng-click="add()">add</button>
+            <!--<br>-->
+            <!--<select name="infoBox4" ng-change="read()" ng-model="newsSelect" size="5" id="newsSelect"></select>-->
+            <!--<br>-->
+            <!--<input id="messageOutputBox" type="text" placeholder="Meldungen werden her angezeigt">-->
+            <!--<br> <b>HTML:</b>-->
+
+            <!--<br>-->
+
+            <!--<p id="htmlSource"></p>-->
+            <!--<br>-->
+            <!--<b>Latex:</b>-->
+
+            <!--<br>-->
+
+            <!--<p id="latexSource"></p>-->
+        </div>
+
+    </div>
+</div>
