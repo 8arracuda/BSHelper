@@ -1,4 +1,4 @@
-sdApp.controller('NewMessageController', function ($scope) {
+sdApp.controller('NewMessageController', function ($scope, $rootScope) {
 
     var structureArray = [{
         name: "Deutschland",
@@ -8,9 +8,7 @@ sdApp.controller('NewMessageController', function ($scope) {
         sub: ["Manchester", "London"]
     }];
 
-    var newsStreamArray = Array();
-
-    var topicsArray = ["S-Bahn", "U-Bahn", "Bus", "O-Bus", "Tram"];
+    $scope.topicsArray = ["S-Bahn", "U-Bahn", "Bus", "O-Bus", "Tram"];
 
     $scope.init = function () {
 
@@ -41,11 +39,22 @@ sdApp.controller('NewMessageController', function ($scope) {
             x.add(option);
         }
 
-        var x = document.getElementById("newTopicSelect");
+        //var x = document.getElementById("newTopicSelect");
+        //
+        ////remove the old options
+        //while (x.length > 0) {
+        //    x.remove(0);
+        //}
 
-        //remove the old options
-        while (x.length > 0) {
-            x.remove(0);
+    };
+
+    $scope.renew = function() {
+        var answer = confirm("are you sure?");
+        if (answer) {
+            $rootScope.newsStreamArray=Array();
+            localStorage.setItem("BSNewsStreamArray", JSON.stringify(""));
+        //    $scope.init();
+      //      $scope.update3()
         }
 
     };
@@ -54,11 +63,11 @@ sdApp.controller('NewMessageController', function ($scope) {
 
         $scope.showSuccessMessage = false;
 
-        if ($scope.mainStructure == null || $scope.subStructure == null || $scope.selectedTopic == "") {
+        if ($scope.mainStructure == "" || $scope.subStructure == "" || $scope.selectedTopic == "") {
             alert("some thing is missing");
         } else {
 
-            newsStreamArray.push({
+            $rootScope.newsStreamArray.push({
                 name: new Date().toLocaleString() + " " + $scope.mainStructure + " - " + $scope.subStructure + " - " + $scope.selectedTopic,
                 headline: $scope.headlineString,
                 message: $scope.messageString
@@ -68,6 +77,13 @@ sdApp.controller('NewMessageController', function ($scope) {
         }
 
         $scope.messageString = "";
+        saveToLocalStorage();
+
+    };
+
+    saveToLocalStorage = function() {
+
+        localStorage.setItem("BSNewsStreamArray", JSON.stringify($rootScope.newsStreamArray));
 
     };
 

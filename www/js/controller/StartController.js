@@ -31,6 +31,13 @@ sdApp.controller('StartController', function ($scope, $rootScope) {
 
     $scope.init = function () {
 
+        $rootScope.authorName = localStorage.getItem('BSAuthorName');
+        $rootScope.authorEmail = localStorage.getItem('BSAuthorEMail');
+
+        if ($rootScope.authorName=="") {
+            alert('Bitte geben sie im Bereich Einstellungen Ihren Namen ein.');
+        }
+
         var x = document.getElementById("newsSelect");
         var option = document.createElement("option");
         for (var i = 0; i < $rootScope.newsStreamArray.length; i++) {

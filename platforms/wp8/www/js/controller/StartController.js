@@ -1,80 +1,101 @@
-sdApp.controller('StartController', function ($scope) {
+sdApp.controller('StartController', function ($scope, $rootScope) {
 
-$scope.headlineString = "";
-$scope.messageString = "";
+    $scope.headlineString = "";
+    $scope.messageString = "";
 
-var structureArray = [{
-    name: "Deutschland",
-    sub: ["Köln", "Bonn"]
-}, {
-    name: "England",
-    sub: ["Manchester", "London"]
-}];
+    $rootScope.newsStreamArray = Array();
+    //$rootScope.newsStreamArray = [{
+    //    name: new Date().toLocaleString() + "a" + "b" + "c",
+    //    headline: "headline",
+    //    message: "message"
+    //}, {
+    //    name: new Date().toLocaleString() + "a" + "b" + "c2",
+    //    headline: "headline2",
+    //    message: "message2"
+    //}];
 
-var newsStreamArray = [{
-    name: new Date().toLocaleString() + "a" + "b" + "c",
-    headline: "headline",
-    message: "message"
-},{
-    name: new Date().toLocaleString() + "a" + "b" + "c2",
-    headline: "headline2",
-    message: "message2"
-}];
+    $scope.manualUpdate = function () {
+      $scope.update3();
+    };
 
-$scope.init = function () {
+    $scope.renew = function() {
+        var answer = confirm("are you sure?");
+        if (answer) {
+            $rootScope.newsStreamArray=Array();
+            localStorage.setItem("BSNewsStreamArray", JSON.stringify(""));
+            $scope.init();
+            $scope.update3()
+        }
 
-    var x = document.getElementById("newsSelect");
-    var option = document.createElement("option");
-    for (var i = 0; i < newsStreamArray.length; i++) {
+    };
+
+    $scope.init = function () {
+
+        $rootScope.authorName = localStorage.getItem('BSAuthorName');
+        $rootScope.authorEmail = localStorage.getItem('BSAuthorEMail');
+
+        if ($rootScope.authorName=="") {
+            alert('Bitte geben sie im Bereich Einstellungen Ihren Namen ein.');
+        }
+
+        var x = document.getElementById("newsSelect");
         var option = document.createElement("option");
-        option.text = newsStreamArray[i].name;
-        x.add(option);
-    }
+        for (var i = 0; i < $rootScope.newsStreamArray.length; i++) {
+            var option = document.createElement("option");
+            option.text = $rootScope.newsStreamArray[i].name;
+            x.add(option);
+        }
 
-};
+        loadToLocalStorage();
 
-$scope.update3 = function () {
+    };
 
-    var newsSelect = document.getElementById("newsSelect");
-    var option = document.createElement("option");
+    loadToLocalStorage = function () {
 
-    for (var i = 0; i < newsStreamArray.length; i++) {
+        $rootScope.newsStreamArray = JSON.parse(localStorage.getItem("BSNewsStreamArray"));
+
+    };
+
+    $scope.update3 = function () {
+
+        var newsSelect = document.getElementById("newsSelect");
         var option = document.createElement("option");
-        option.text = newsStreamArray[i].name;
-        newsSelect.add(option);
-    }
-};
 
-$scope.read = function () {
+        for (var i = 0; i < $rootScope.newsStreamArray.length; i++) {
+            var option = document.createElement("option");
+            option.text = $rootScope.newsStreamArray[i].name;
+            newsSelect.add(option);
+        }
+    };
 
-    newsIndex = document.getElementById("newsSelect").selectedIndex;
+    $scope.read = function () {
 
-    document.getElementById("messageOutputBox").value = newsStreamArray[newsIndex].message;
+        newsIndex = document.getElementById("newsSelect").selectedIndex;
 
-    $scope.updateLatexSouce();
-    $scope.updateHtmlSource();
+        $scope.updateLatexSouce();
+        $scope.updateHtmlSource();
 
-};
+    };
 
-$scope.updateHtmlSource = function () {
+    $scope.updateHtmlSource = function () {
 
-    selectedNewsIndex = document.getElementById("newsSelect").selectedIndex;
+        selectedNewsIndex = document.getElementById("newsSelect").selectedIndex;
 
-    htmlString = "<h2>" + newsStreamArray[selectedNewsIndex].headline + "</h2> <p>" + newsStreamArray[selectedNewsIndex].message + "</p>";
+        htmlString = "<h2>" + $rootScope.newsStreamArray[selectedNewsIndex].headline + "</h2> <p>" + $rootScope.newsStreamArray[selectedNewsIndex].message + "</p>";
 
-    document.getElementById("htmlSource").innerHTML = htmlString;
+        document.getElementById("htmlSource").innerHTML = htmlString;
 
-};
+    };
 
-$scope.updateLatexSouce = function () {
-    selectedNewsIndex = document.getElementById("newsSelect").selectedIndex;
+    $scope.updateLatexSouce = function () {
+        selectedNewsIndex = document.getElementById("newsSelect").selectedIndex;
 
-    latexString = "/textbf{" + newsStreamArray[selectedNewsIndex].headline + "}" + newsStreamArray[selectedNewsIndex].message;
+        latexString = "/textbf{" + $rootScope.newsStreamArray[selectedNewsIndex].headline + "}" + $rootScope.newsStreamArray[selectedNewsIndex].message;
 
-    document.getElementById("latexSource").innerHTML = latexString;
+        document.getElementById("latexSource").innerHTML = latexString;
 
-};
+    };
 
-$scope.init();
+    $scope.init();
 
 });

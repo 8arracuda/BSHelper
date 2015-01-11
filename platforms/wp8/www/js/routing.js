@@ -13,6 +13,10 @@ sdApp.config(function ($routeProvider) {
             templateUrl: 'newMessage.html',
             controller: 'NewMessageController'
         }).
+        when('/settings', {
+            templateUrl: 'settings.html',
+            controller: 'SettingsController'
+        }).
         otherwise({
             redirectTo: '/start'
         });

@@ -56,20 +56,7 @@ var sdApp = angular.module('sdApp', ["ngRoute", "mobile-angular-ui"]);
 //On Windows Phone this cannot be used to fetch files from the local file system.
 //It is used only for Android and iOS.
 //
-function FileHelper() {
 
-}
-{
-    FileHelper.readStringFromFileAtPath = function (pathOfFileToReadFrom) {
-        var request = new XMLHttpRequest();
-
-        //false = synchronous!
-        request.open("GET", pathOfFileToReadFrom, false);
-        request.send(null);
-        var returnValue = request.responseText;
-        return returnValue;
-    }
-}
 
 //Code take from http://www.stephenpauladams.com/articles/angularjs-cordova-windows-phone-quirk/
 //it makes links work in Windows Phone

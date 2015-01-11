@@ -19,7 +19,6 @@
 
                 </select>
 
-
                 <select bs-form-control
                         name="infoBox2"
                         ng-change="update2()"
@@ -34,9 +33,12 @@
                         label="Thema"
                         ng-model="selectedTopic"
                         id="newTopicSelect">
-
+                    <option ng-repeat="topic in topicsArray">
+                        {{ topic }}
+                    </option>
                 </select>
 
+                <button ng-click="renew()">renew</button>
             </div>
             <div class="panel-heading">
                 <h2 class="panel-title">
@@ -67,21 +69,21 @@
                     />
             <br>
             <button class="btn btn-primary" ng-click="add()">add</button>
-            <br>
-            <select name="infoBox4" ng-change="read()" ng-model="newsSelect" size="5" id="newsSelect"></select>
-            <br>
-            <input id="messageOutputBox" type="text" placeholder="Meldungen werden her angezeigt">
-            <br> <b>HTML:</b>
+            <!--<br>-->
+            <!--<select name="infoBox4" ng-change="read()" ng-model="newsSelect" size="5" id="newsSelect"></select>-->
+            <!--<br>-->
+            <!--<input id="messageOutputBox" type="text" placeholder="Meldungen werden her angezeigt">-->
+            <!--<br> <b>HTML:</b>-->
 
-            <br>
+            <!--<br>-->
 
-            <p id="htmlSource"></p>
-            <br>
-            <b>Latex:</b>
+            <!--<p id="htmlSource"></p>-->
+            <!--<br>-->
+            <!--<b>Latex:</b>-->
 
-            <br>
+            <!--<br>-->
 
-            <p id="latexSource"></p>
+            <!--<p id="latexSource"></p>-->
         </div>
 
     </div>

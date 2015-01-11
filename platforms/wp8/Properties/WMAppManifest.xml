@@ -4,7 +4,7 @@
     <Languages xmlns="">
         <Language code="en-US" />
     </Languages>
-    <App Author="BSHelper author" BitsPerPixel="32" Description="Apache Cordova for Windows Phone" Genre="apps.normal" ProductID="{0631c0a0-9771-11e4-b119-5fe72a5d339b}" Publisher="BSHelper" PublisherID="{db093ed5-53b1-45f7-af72-751e8f36ab80}" RuntimeType="Silverlight" Title="BSHelper" Version="0.0.1" xmlns="">
+    <App Author="BSHelper author" BitsPerPixel="32" Description="Apache Cordova for Windows Phone" Genre="apps.normal" ProductID="{9999afd0-9788-11e4-97dc-193746b8b340}" Publisher="BSHelper" PublisherID="{db093ed5-53b1-45f7-af72-751e8f36ab80}" RuntimeType="Silverlight" Title="BSHelper" Version="0.0.1" xmlns="">
         <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
         <Capabilities>
             <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />

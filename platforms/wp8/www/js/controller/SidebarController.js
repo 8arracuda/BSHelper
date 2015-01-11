@@ -7,6 +7,9 @@ sdApp.controller('SidebarController', function ($scope) {
         },{
             labelText: 'Neue Nachricht',
             linkURL: 'newMessage'
+        },{
+            labelText: 'Einstellungen',
+            linkURL: 'settings'
         }
     ];
 

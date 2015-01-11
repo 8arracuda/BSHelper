@@ -1,0 +1,33 @@
+<div class="scrollable">
+    <div class="scrollable-content">
+        <div class="panel">
+
+            <div class="panel-heading">
+                <h2 class="panel-title">
+                    Bereich auswählen
+                </h2>
+            </div>
+            <input
+                    bs-form-control
+                    id="authorName"
+                    type="text"
+                    label="Name des Autors"
+                    placeholder="Name des Autors hier eingeben"
+                    label-class="col-xs-3 col-sm-2 col-lg-1"
+                    class="col-xs-9 col-sm-10 col-lg-11"
+                    ng-model="authorName"
+                    />
+            <input
+                    bs-form-control
+                    id="authorEmail"
+                    type="text"
+                    label="E-Mail-Adresse des Autors"
+                    placeholder="E-Mail-Adresse des Autors hier eingeben"
+                    label-class="col-xs-3 col-sm-2 col-lg-1"
+                    class="col-xs-9 col-sm-10 col-lg-11"
+                    ng-model="authorEmail"
+                    />
+            <button class="btn btn-primary" ng-click="save()">speichern</button>
+        </div>
+    </div>
+</div>
